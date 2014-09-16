@@ -4,9 +4,44 @@
 	<meta charset="UTF-8">
 	<title></title>
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script src="./main.js"></script>
+	<style>
+		#oekaki{
+			border: 10px solid #999;
+		}
+	</style>
 </head>
 <body>
-	<canvas id="oekaki"></canvas>
+<p>
+	<select id="canvas_size" name="canvas_size">
+		<option value="640x480">640x480</option>
+		<option value="320x240">320x240</option>
+		<option value="480x640">480x640</option>
+		<option value="240x320">240x320</option>
+	</select>
+</p>
+<button class="btn" data-target="#oekaki_modal" data-toggle="modal" name="button" type="submit">お絵かき</button>
+<div id="oekaki_modal" class="modal fade">
+	<div class="modal-dialog">
+		<canvas id="oekaki" width=640 height=480 style="background-color: white"></canvas>
+	</div>
+</div>
+<script>
+$(function(){
+
+	$("#canvas_size").change(function(){
+		var wh = $(this).val().split('x');
+		var w = wh[0]; 
+		var h = wh[1]; 
+		$("#oekaki").attr("width",w);
+		$("#oekaki").attr("height",h);
+		});
+});
+</script>
 </body>
 </html>
